@@ -9,15 +9,15 @@ class guiWindow(tk.Tk):
         self.config( bg="#F7F7F8")
 
         #ContentFrame
-        contentFrame = tk.Frame(self)
-        contentFrame.config(width = 30, height = 10, bg="#F7F7F8")
-        contentFrame.grid(row = 0, column = 1, padx = 20, pady = 20, sticky = "nsew")
+        self.contentFrame = tk.Frame(self)
+        self.contentFrame.config(width = 30, height = 10, bg="#F7F7F8")
+        self.contentFrame.grid(row = 0, column = 1, padx = 20, pady = 20, sticky = "nsew")
 
-        randomText = tk.Label(contentFrame, text = "Random text will appear here!", font = ("Arial", 18))
-        randomText.grid(row = 0, column = 0, pady = 10, sticky = "wn")
+        self.randomText = tk.Label(self.contentFrame, text = "Text will appear here!", font = ("Arial", 18), wraplength=1000, bg="#F7F7F8", anchor="w", justify="left")
+        self.randomText.grid(row = 0, column = 0, pady = 10, sticky = "wn")
 
-        inputText = tk.Text(contentFrame, font = ("Arial", 14, 'normal'))
-        inputText.grid(row = 2, column = 0, pady = 10, sticky = "wn")
+        self.inputText = tk.Text(self.contentFrame, font = ("Arial", 14, 'normal'))
+        self.inputText.grid(row = 2, column = 0, pady = 10, sticky = "wn")
 
         #MenuFrame
         menuFrame = tk.Frame(self, padx=10,pady=10)
@@ -44,7 +44,7 @@ class guiWindow(tk.Tk):
         self.startButton = tk.Button(menuFrame, text = "Start", font = ("MS Sans Serif",10,"bold"), bg = "#47ff98", borderwidth=0)
         self.startButton.grid(row = 6, column=0, pady = 5, sticky ="wse")
 
-        stopButton = tk.Button(menuFrame, text="Stop", font=("MS Sans Serif", 10,"bold"),bg = "#f95555")
-        stopButton.grid(row=7, column=0, pady=5, sticky="wse")
+        self.stopButton = tk.Button(menuFrame, text="Stop", font=("MS Sans Serif", 10,"bold"),bg = "#f95555")
+        self.stopButton.grid(row=7, column=0, pady=5, sticky="wse")
 
 
