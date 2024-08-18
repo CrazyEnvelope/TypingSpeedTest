@@ -36,13 +36,13 @@ class guiWindow(tk.Tk):
         labelAccuracy = tk.Label(menuFrame,text = "Accuracy:", font=("MS Sans Serif", 10, 'normal'),fg="white",bg="#402E7A")
         labelAccuracy.grid(row=3, column=0, pady = 5, sticky="w")
 
-        labelTime = tk.Label(menuFrame, text = "Time remaining:", font=("MS Sans Serif", 10, 'normal'), fg="white",bg="#402E7A")
-        labelTime.grid(row=4, column=0, pady = 5, sticky="w")
+        self.labelTime = tk.Label(menuFrame, text = "Time remaining:", font=("MS Sans Serif", 10, 'normal'), fg="white",bg="#402E7A")
+        self.labelTime.grid(row=4, column=0, pady = 5, sticky="w")
 
         menuFrame.grid_rowconfigure(5,weight = 1)
 
-        startButton = tk.Button(menuFrame, text = "Start", font = ("MS Sans Serif",10,"bold"), bg = "#47ff98", borderwidth=0)
-        startButton.grid(row = 6, column=0, pady = 5, sticky ="wse")
+        self.startButton = tk.Button(menuFrame, text = "Start", font = ("MS Sans Serif",10,"bold"), bg = "#47ff98", borderwidth=0)
+        self.startButton.grid(row = 6, column=0, pady = 5, sticky ="wse")
 
         stopButton = tk.Button(menuFrame, text="Stop", font=("MS Sans Serif", 10,"bold"),bg = "#f95555")
         stopButton.grid(row=7, column=0, pady=5, sticky="wse")
