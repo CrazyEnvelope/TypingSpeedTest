@@ -27,14 +27,14 @@ class guiWindow(tk.Tk):
         labelTitle = tk.Label(menuFrame, text="TST", font=("Benett Sans Serif", 30, 'bold'), fg="white", bg="#402E7A")
         labelTitle.grid(row=0, column=0, pady=5, padx=(0,100), sticky="w")
 
-        labelWPM = tk.Label(menuFrame,text ="WPM: 0" , font = ("MS Sans Serif", 10, 'normal') ,fg="white", bg="#402E7A")
-        labelWPM.grid(row = 1, column = 0, pady = (60,5), sticky="w")
+        self.labelWPM = tk.Label(menuFrame,text ="WPM: 0" , font = ("MS Sans Serif", 10, 'normal') ,fg="white", bg="#402E7A")
+        self.labelWPM.grid(row = 1, column = 0, pady = (60,5), sticky="w")
 
-        labelErrors = tk.Label(menuFrame, text = "Entry errors: 0" , font=("MS Sans Serif", 10, 'normal'),fg="white",bg="#402E7A")
-        labelErrors.grid(row=2, column=0, pady = 5, sticky="w")
+        self.labelErrors = tk.Label(menuFrame, text = "Entry errors: 0" , font=("MS Sans Serif", 10, 'normal'),fg="white",bg="#402E7A")
+        self.labelErrors.grid(row=2, column=0, pady = 5, sticky="w")
 
-        labelAccuracy = tk.Label(menuFrame,text = "Accuracy: 0 %", font=("MS Sans Serif", 10, 'normal'),fg="white",bg="#402E7A")
-        labelAccuracy.grid(row=3, column=0, pady = 5, sticky="w")
+        self.labelAccuracy = tk.Label(menuFrame,text = "Accuracy: 0 %", font=("MS Sans Serif", 10, 'normal'),fg="white",bg="#402E7A")
+        self.labelAccuracy.grid(row=3, column=0, pady = 5, sticky="w")
 
         self.labelTime = tk.Label(menuFrame, text = "Time remaining: 00 s", font=("MS Sans Serif", 10, 'normal'), fg="white",bg="#402E7A")
         self.labelTime.grid(row=4, column=0, pady = 5, sticky="w")

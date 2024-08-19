@@ -1,11 +1,16 @@
+from dbm import error
+from idlelib.iomenu import errors
+
 from gui_window import guiWindow
 from text import  paragraphs
 import random
 
 timer_id = None
 is_finished = False
+randomParagraph = ""
+errors = 0
 
-def startTimer(seconds=5):
+def startTimer(seconds=60):
     global timer_id
     if seconds == 60:
         secs = "60"
@@ -21,7 +26,7 @@ def startTimer(seconds=5):
         guiSpeedtest.inputText.config(state="disabled", bg="#F7F7F8")
 
 def startTyping():
-    global is_finished
+    global is_finished, randomParagraph
     is_finished = False
     randomParagraph = random.choice(paragraphs)
     guiSpeedtest.randomText.config(text = randomParagraph)
@@ -44,13 +49,24 @@ def stopTimer():
     calculateErrors()
 
 def calculateErrors():
-    global is_finished
+    global is_finished, randomParagraph, errors, netSpeed, grossWPM, accuracy
     if is_finished:
         content = guiSpeedtest.inputText.get("1.0","end")
         words_written = [word for word in content.split(" ")]
         words_written[-1] = words_written[-1].strip()
 
-        print(words_written)
+        words_paragraph = [word for word in randomParagraph.split(" ")]
+
+        for word_written in words_written:
+            if word_written not in words_paragraph:
+                errors = errors + 1
+
+        grossWPM = len(words_written) / 1
+        netSpeed = (grossWPM - errors)/1
+        accuracy = (netSpeed/grossWPM) * 100
+        guiSpeedtest.labelWPM.config(text = f"WPM: {netSpeed}")
+        guiSpeedtest.labelErrors.config(text = f"Entry errors: {errors}")
+        guiSpeedtest.labelAccuracy.config(text = f"Accuracy: {accuracy}%")
 
 guiSpeedtest = guiWindow()
 guiSpeedtest.inputText.config(state = "disabled", bg = "#F7F7F8")
